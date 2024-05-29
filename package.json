@@ -1,5 +1,6 @@
 {
   "name": "goit-node-rest-api",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,8 +10,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "joi": "^17.11.0",
-    "morgan": "^1.10.0"
+    "joi": "^17.13.1",
+    "morgan": "^1.10.0",
+    "nanoid": "^5.0.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.1"

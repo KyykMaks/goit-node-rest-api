@@ -55,7 +55,7 @@ export const createContact = async (req, res) => {
     const {id,name, email, phone } = req.body;
   
     if (!id || !name || !email || !phone) {
-      throw new HttpError(400, "Name, email, and phone are required");
+      throw HttpError(400, "Name, email, and phone are required");
     }
   
     const result = await addContact( id,name, email, phone);
@@ -72,11 +72,11 @@ export const updateContact = async (req, res) => {
     const { error: validationError } = updateContactSchema.validate(req.body);
     
     if (validationError) {
-      throw new HttpError(400, validationError.message);
+      throw HttpError(400, validationError.message);
     }
     
     if (Object.keys(req.body).length < 1) {
-      throw new HttpError(400, "Body must have at least one field");
+      throw HttpError(400, "Body must have at least one field");
     }
     const result = await updateById(id, req.body);
     if (!result) {

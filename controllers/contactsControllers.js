@@ -51,15 +51,11 @@ export const deleteContact = async (req, res) => {
 export const createContact = async (req, res) => {
   try {
     await createContactSchema.validateAsync(req.body);
-  
-    const {id,name, email, phone } = req.body;
-  
-    if (!id || !name || !email || !phone) {
-      throw HttpError(400, "Name, email, and phone are required");
-    }
-  
-    const result = await addContact( id,name, email, phone);
-  
+
+    const { name, email, phone } = req.body;
+
+    const result = await addContact(name, email, phone);
+
     res.status(201).json(result);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -80,11 +76,11 @@ export const updateContact = async (req, res) => {
     }
     const result = await updateById(id, req.body);
     if (!result) {
-      throw new HttpError(404, "Not Found");
+      throw HttpError(404, "Not Found");
     }
 
     res.status(200).json(result);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(error.statusCode || 400).json({ message: error.message });
   }
 };

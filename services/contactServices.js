@@ -23,7 +23,7 @@ export async function removeContact(contactId) {
     const deletedContact = await Contact.findByIdAndDelete(contactId);
     return deletedContact;
   } catch (error) {
-    throw new Error("Unable to remove contact");
+    throw Error("Unable to remove contact");
   }
 }
 

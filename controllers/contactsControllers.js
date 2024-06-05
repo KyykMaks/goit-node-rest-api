@@ -8,16 +8,16 @@ import {
   updateStatusContact,
 } from "../services/contactServices.js";
 
-export const getAllContacts = async (req, res, next) => {
+export const getAllContacts = async (req, res) => {
   try {
     const result = await listContacts();
     res.json(result);
   } catch (error) {
-    next(error);
+    res.status(500).json({ message: error.message });
   }
 };
 
-export const getOneContact = async (req, res, next) => {
+export const getOneContact = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -27,11 +27,11 @@ export const getOneContact = async (req, res, next) => {
     }
     res.json(result);
   } catch (error) {
-    next(error);
+    res.status(500).json({ message: error.message });
   }
 };
 
-export const deleteContact = async (req, res, next) => {
+export const deleteContact = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -41,21 +41,21 @@ export const deleteContact = async (req, res, next) => {
     }
     res.json(result);
   } catch (error) {
-    next(error);
+    res.status(500).json({ message: error.message });
   }
 };
 
-export const createContact = async (req, res, next) => {
- 
+export const createContact = async (req, res) => {
   try {
     const result = await addContact(req.body);
     res.status(201).json(result);
   } catch (error) {
-    next(error);
+    res.status(400).json({ message: "Please fill in all required fields with valid " });
   }
 };
 
-export const updateContact = async (req, res, next) => {
+
+export const updateContact = async (req, res) => {
   const { id } = req.params;
   const contact = req.body;
 
@@ -71,11 +71,11 @@ export const updateContact = async (req, res, next) => {
 
     res.json(result);
   } catch (error) {
-    next(error);
+    res.status(400).json({ message: "Please provide valid values for all fields" });
   }
 };
 
-export const updateStatus = async (req, res, next) => {
+export const updateStatus = async (req, res) => {
   const { id } = req.params;
   const { favorite } = req.body;
 
@@ -86,6 +86,6 @@ export const updateStatus = async (req, res, next) => {
     }
     res.json(result);
   } catch (error) {
-    next(error);
+    res.status(400).json({ message: "Invalid value for the favorite field"});
   }
 };

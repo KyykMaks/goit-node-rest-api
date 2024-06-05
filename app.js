@@ -37,6 +37,6 @@ app.use((req, res) => {
 });
 
 app.use ((error, req, res) => {
-    const {status = 500, message = "Server error"} = err;
+    const {status = 500, message = "Server error"} = error;
     res.status(status).json({message});
 })

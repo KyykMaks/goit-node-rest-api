@@ -50,7 +50,7 @@ export const createContact = async (req, res) => {
     const result = await addContact(req.body);
     res.status(201).json(result);
   } catch (error) {
-    res.status(400).json({ message: "Please fill in all required fields with valid values" });
+    res.status(400).json({ message: "Please fill in all required fields with valid " });
   }
 };
 
@@ -71,7 +71,7 @@ export const updateContact = async (req, res) => {
 
     res.json(result);
   } catch (error) {
-    res.status(400).json({  message: "Please provide valid values for all fields" });
+    res.status(400).json({ message: "Please provide valid values for all fields" });
   }
 };
 

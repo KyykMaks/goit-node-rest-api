@@ -5,7 +5,7 @@ export async function listContacts() {
     const contacts = await Contact.find();
     return contacts;
   } catch (error) {
-    throw new Error("Unable to list contacts");
+    throw Error("Unable to list contacts");
   }
 }
 
@@ -14,7 +14,7 @@ export async function getContactById(contactId) {
     const contact = await Contact.findById(contactId);
     return contact || null;
   } catch (error) {
-    throw new Error("Unable to get contact by ID");
+    throw Error("Unable to get contact by ID");
   }
 }
 
@@ -32,7 +32,7 @@ export async function addContact(data) {
     const newContact = await Contact.create(data);
     return newContact;
   } catch (error) {
-    throw new Error("Unable to add contact");
+    throw Error("Unable to add contact");
   }
 }
 
@@ -43,7 +43,7 @@ export async function updateById(contactId, data) {
     });
     return updatedContact;
   } catch (error) {
-    throw new Error("Unable to update contact by ID");
+    throw Error("Unable to update contact by ID");
   }
 }
 
@@ -54,6 +54,6 @@ export async function updateStatusContact(contactId, body) {
     });
     return updatedContact;
   } catch (error) {
-    throw new Error("Unable to update contact status");
+    throw Error("Unable to update contact status");
   }
 }

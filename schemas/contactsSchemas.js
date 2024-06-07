@@ -13,15 +13,11 @@ export const createContactSchema = Joi.object({
 });
 
 export const updateContactSchema = Joi.object({
-  ame: Joi.string().min(3),
-  email: Joi.string().email(),
-  phone: Joi.string().min(8),
-  favorite: Joi.boolean()
+  name: Joi.string(),
+  email: Joi.string(),
+  phone: Joi.string(),
 });
 
 export const updateStatusSchema = Joi.object({
-  name: Joi.string().min(3),
-  email: Joi.string().email(),
-  phone: Joi.string().min(8),
   favorite: Joi.boolean().required(),
 });

@@ -27,7 +27,7 @@ export const getOneContact = async (req, res, next) => {
     }
     res.json(result);
   } catch (error) {
-    next(error)
+    next(error);
   }
 };
 
